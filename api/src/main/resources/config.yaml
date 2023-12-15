@@ -13,7 +13,7 @@ kumuluzee:
       username: dbuser
       password: postgres
       pool:
-        max-size: 4
+        max-size: 2
   health:
     checks:
 #      data-source-health-check:

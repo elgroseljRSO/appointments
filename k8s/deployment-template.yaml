@@ -15,7 +15,7 @@ spec:
         app: image-catalog
     spec:
       containers:
-        - image: turkiznazaba/appointments:2023-12-15-08-55-03 #to be changed
+        - image: turkiznazaba/appointments:2023-12-15-09-05-59 #to be changed
           name: image-catalog
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
