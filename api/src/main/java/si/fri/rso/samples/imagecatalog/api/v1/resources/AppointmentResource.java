@@ -94,7 +94,8 @@ public class AppointmentResource {
 
 
         Appointment appointment = appointmentBean.createAppointment(start,customer,serviceTypeId,employeeId);
-        return Response.status(Response.Status.OK).entity(appointment).build();
+        int appointmentId = appointment.getId();
+        return Response.status(Response.Status.OK).entity(appointmentId).build();
 
 
 
