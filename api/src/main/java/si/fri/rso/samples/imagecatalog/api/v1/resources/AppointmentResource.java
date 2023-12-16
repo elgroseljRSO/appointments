@@ -85,17 +85,24 @@ public class AppointmentResource {
     public Response createAppointment(@RequestBody(
             description = "Object with appointment data",
             required = true) String jsonString) {
+        try{
+            JSONObject obj = new JSONObject(jsonString);
+            String customer = obj.getString("customer");
+            int start = obj.getInt("start");
+            int serviceTypeId = obj.getJSONObject("service_type").getInt("id");
+            int employeeId = obj.getJSONObject("employee").getInt("id");
 
-        JSONObject obj = new JSONObject(jsonString);
-        String customer = obj.getString("customer");
-        int start = obj.getInt("start");
-        int serviceTypeId = obj.getJSONObject("service_type").getInt("id");
-        int employeeId = obj.getJSONObject("employee").getInt("id");
+            Appointment appointment = appointmentBean.createAppointment(start,customer,serviceTypeId,employeeId);
+            int appointmentId = appointment.getId();
+            return Response.status(Response.Status.CREATED).entity(appointmentId).build();
+        }
+        catch (Exception e) {
+            return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
+        }
 
 
-        Appointment appointment = appointmentBean.createAppointment(start,customer,serviceTypeId,employeeId);
-        int appointmentId = appointment.getId();
-        return Response.status(Response.Status.OK).entity(appointmentId).build();
+
+
 
 
 
