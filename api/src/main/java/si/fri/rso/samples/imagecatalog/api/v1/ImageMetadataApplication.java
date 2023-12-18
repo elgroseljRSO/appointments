@@ -4,6 +4,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 import org.eclipse.microprofile.openapi.annotations.info.Contact;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
@@ -17,6 +18,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
 //        servers = @Server(url = "http://20.246.215.85:8080/"))
 
 @ApplicationPath("/v1")
+@CrossOrigin
 public class ImageMetadataApplication extends Application {
 
 }
