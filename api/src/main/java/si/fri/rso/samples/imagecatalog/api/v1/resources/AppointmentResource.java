@@ -94,7 +94,8 @@ public class AppointmentResource {
 
             Appointment appointment = appointmentBean.createAppointment(start,customer,serviceTypeId,employeeId);
             int appointmentId = appointment.getId();
-            return Response.status(Response.Status.CREATED).entity(appointmentId).build();
+            obj.put("id", appointmentId);
+            return Response.status(Response.Status.CREATED).entity(obj.toString()).build();
         }
         catch (Exception e) {
             return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
