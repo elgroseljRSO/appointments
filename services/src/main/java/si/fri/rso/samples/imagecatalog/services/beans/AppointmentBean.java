@@ -11,12 +11,15 @@ import si.fri.rso.samples.imagecatalog.models.entities.ServiceType;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.UriInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @RequestScoped
 public class AppointmentBean {
@@ -24,6 +27,18 @@ public class AppointmentBean {
 
     @Inject
     private EntityManager em;
+
+
+    public List<Appointment> getAppointments() {
+
+        TypedQuery<Appointment> query = em.createNamedQuery(
+                "Appointment.getAll", Appointment.class);
+
+        List<Appointment> resultList = query.getResultList();
+
+        return resultList;
+
+    }
 
 
     @Counted(name = "appointmentFilterCounter")
@@ -34,6 +49,18 @@ public class AppointmentBean {
 
         return JPAUtils.queryEntities(em, Appointment.class, queryParameters);
     }
+
+    public Appointment getAppointment(Integer id) {
+
+        Appointment appointment = em.find(Appointment.class, id);
+
+        if (appointment == null) {
+            throw new NotFoundException();
+        }
+
+        return appointment;
+    }
+
 
     @Timed(name = "appointmentAvailableByServiceTypeTimer", unit = "milliseconds")
     public List<Appointment> getAppointmentAvailableByServiceType(int serviceTypeId) {

@@ -1,0 +1,26 @@
+query allAppointments {
+   allAppointments(pagination: {offset: 0, limit: 10},
+    						sort: {fields: [{field: "start", order: ASC}]}) {
+    result {
+    	id
+    	start
+    	employee {
+            id
+    		name
+    	}
+    	customer
+    	service_type {
+    		id
+    		name
+    		cost
+    	}
+
+    }
+    pagination {
+      offset
+      limit
+      total
+    }
+  }
+}
+

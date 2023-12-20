@@ -31,6 +31,8 @@
         <kumuluzee-logs.version>1.4.6</kumuluzee-logs.version>
         <kumuluzee-cors.version>2.0.0</kumuluzee-cors.version>
 
+        <kumuluzee-graphql.version>1.1.0</kumuluzee-graphql.version>
+
     </properties>
 
     <dependencyManagement>
@@ -117,6 +119,24 @@
                 <groupId>com.kumuluz.ee.cors</groupId>
                 <artifactId>kumuluzee-cors</artifactId>
                 <version>${kumuluzee-cors.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.graphql</groupId>
+                <artifactId>kumuluzee-graphql</artifactId>
+                <version>${kumuluzee-graphql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.graphql</groupId>
+                <artifactId>kumuluzee-graphql-ui</artifactId>
+                <version>${kumuluzee-graphql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.graphql</groupId>
+                <artifactId>kumuluzee-graphql-mp</artifactId>
+                <version>${kumuluzee-graphql.version}</version>
             </dependency>
 
         </dependencies>
