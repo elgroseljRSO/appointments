@@ -66,3 +66,29 @@ export JDK_JAVA_OPTIONS=--add-opens=java.base/java.lang=ALL-UNNAMED
 ```
 
 
+ingress-nginx
+```bash
+NAMESPACE=ingress-basic
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm install ingress-nginx ingress-nginx/ingress-nginx \
+  --create-namespace \
+  --namespace $NAMESPACE \
+  --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
+  
+  
+  
+  
+kubectl get deployments --all-namespaces=true
+
+  
+kubectl apply -f k8s/deployment-template-clusterIP.yaml --namespace ingress-basic
+kubectl apply -f k8s/ingress-sample.yaml --namespace ingress-basic
+
+
+kubectl delete namespace ingress-basic
+```
+
+
