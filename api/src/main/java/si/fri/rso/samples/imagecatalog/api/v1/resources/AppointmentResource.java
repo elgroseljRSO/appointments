@@ -76,7 +76,8 @@ public class AppointmentResource {
             @APIResponse(responseCode = "201",
                     description = "Appointment successfully added."
             ),
-            @APIResponse(responseCode = "405", description = "Validation error.")
+            @APIResponse(responseCode = "405", description = "Validation error."),
+            @APIResponse(responseCode = "409", description = "Appointment already exists.")
     })
     @POST
     public Response createAppointment(@RequestBody(
@@ -90,6 +91,10 @@ public class AppointmentResource {
             int employeeId = obj.getJSONObject("employee").getInt("id");
 
             Appointment appointment = appointmentBean.createAppointment(start,customer,serviceTypeId,employeeId);
+            if (appointment == null){
+                log.info("conflict");
+                return Response.status(Response.Status.CONFLICT).build();
+            }
             int appointmentId = appointment.getId();
             obj.put("id", appointmentId);
             return Response.status(Response.Status.CREATED).entity(obj.toString()).build();

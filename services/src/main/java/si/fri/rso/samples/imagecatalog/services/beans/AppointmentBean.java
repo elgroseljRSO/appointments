@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.UriInfo;
 import java.util.ArrayList;
@@ -115,8 +116,34 @@ public class AppointmentBean {
     }
 
     public Appointment createAppointment(int start,String customer,int serviceTypeId,int employeeId) {
+
         ServiceType serviceType = em.find(ServiceType.class, serviceTypeId);
         Employee employee = em.find(Employee.class, employeeId);
+
+
+        log.info("serviceType: "+serviceType+" employee: "+employee+" start: "+start+" customer: "+customer);
+
+        final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        final CriteriaQuery<Appointment> cq = cb.createQuery(Appointment.class);
+        Root<Appointment> ar = cq.from(Appointment.class);
+        cq.where(
+                cb.and(
+                        cb.equal(ar.get("customer"), customer),
+                        cb.equal(ar.get("start"), start),
+                        cb.equal(ar.get("service_type"), serviceType),
+                        cb.equal(ar.get("employee"), employee)
+                )
+        );
+        int size = em.createQuery(cq).getResultList().size();
+        if (size > 0) {
+            log.info("already exists");
+            return null;
+        }
+
+
+
+
         Appointment appointment = new Appointment(start, customer, serviceType, employee);
         try {
             beginTx();
