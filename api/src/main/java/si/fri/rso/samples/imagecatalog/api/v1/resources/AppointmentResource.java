@@ -17,10 +17,7 @@ import si.fri.rso.samples.imagecatalog.services.beans.AppointmentBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -107,6 +104,33 @@ public class AppointmentResource {
 
 
 
+    }
+
+
+    @Operation(description = "Delete appointment.", summary = "Delete appointment")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "Appointment successfully deleted."
+            ),
+            @APIResponse(
+                    responseCode = "404",
+                    description = "Not found."
+            )
+    })
+    @DELETE
+    @Path("{id}")
+    public Response deleteImageMetadata(@Parameter(description = "Appointment id.", required = true)
+                                        @PathParam("id") Integer id){
+
+        boolean deleted = appointmentBean.deleteAppointment(id);
+
+        if (deleted) {
+            return Response.status(Response.Status.OK).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
     }
 
 

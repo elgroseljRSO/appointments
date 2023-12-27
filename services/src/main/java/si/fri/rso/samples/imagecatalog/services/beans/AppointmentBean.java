@@ -134,6 +134,30 @@ public class AppointmentBean {
         return appointment;
     }
 
+
+    public boolean deleteAppointment(Integer id) {
+
+        Appointment appointment = em.find(Appointment.class, id);
+
+        if (appointment != null) {
+            try {
+                beginTx();
+                em.remove(appointment);
+                commitTx();
+            }
+            catch (Exception e) {
+                rollbackTx();
+            }
+        }
+        else {
+            return false;
+        }
+
+        return true;
+    }
+
+
+
     private void beginTx() {
         if (!em.getTransaction().isActive()) {
             em.getTransaction().begin();

@@ -18,7 +18,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
 //        servers = @Server(url = "http://20.246.215.85:8080/"))
 
 @ApplicationPath("/v1")
-@CrossOrigin
+@CrossOrigin(supportedMethods = "GET, POST, HEAD, PUT, DELETE, OPTIONS")
 public class ImageMetadataApplication extends Application {
 
 }
