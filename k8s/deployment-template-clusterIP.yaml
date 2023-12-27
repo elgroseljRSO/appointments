@@ -15,15 +15,16 @@ spec:
         app: appointments
     spec:
       containers:
-        - image: turkiznazaba/appointments:2023-12-20-09-22-01 #to be changed
+        - image: turkiznazaba/appointments:2023-12-27-15-52-22 #to be changed
           name: appointments
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://ella.db.elephantsql.com:5432/hdalyqbh
+#              value: jdbc:postgresql://ella.db.elephantsql.com:5432/hdalyqbh
+              value: jdbc:postgresql://dumbo.db.elephantsql.com:5432/frswtwtv
             - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: hdalyqbh
+              value: frswtwtv
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: EfjnbNxlNDRLpxrUMApVIXn1L9meZ2Tb
+              value: bsGzmeDzXOQg4xVO8aY9neDqLPPB-l_P
           #            - name: KUMULUZEE_DATASOURCES0_PASSWORD
           #              valueFrom:
           #                secretKeyRef:
