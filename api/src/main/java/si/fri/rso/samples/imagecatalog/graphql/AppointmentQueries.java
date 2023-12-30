@@ -1,5 +1,6 @@
 package si.fri.rso.samples.imagecatalog.graphql;
 
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
 import com.kumuluz.ee.graphql.annotations.GraphQLClass;
 import com.kumuluz.ee.graphql.classes.Pagination;
 import com.kumuluz.ee.graphql.classes.PaginationWrapper;
@@ -16,6 +17,7 @@ import javax.inject.Inject;
 
 @GraphQLClass
 @ApplicationScoped
+@CrossOrigin(supportedMethods = "GET, POST, HEAD, PUT, DELETE, OPTIONS")
 public class AppointmentQueries {
 
     @Inject
