@@ -15,7 +15,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
         contact = @Contact(email = "rso@fri.uni-lj.si"),
         license = @License(name = "dev"), description = "API for managing appointments."),
 //        servers = @Server(url = "http://localhost:8080/"))
-        servers = @Server(url = "http://20.242.208.205/appointments/"))
+        servers = @Server(url = "http://20.242.208.205:8080"))
 
 @ApplicationPath("/v1")
 @CrossOrigin(supportedMethods = "GET, POST, HEAD, PUT, DELETE, OPTIONS")

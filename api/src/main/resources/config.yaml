@@ -13,7 +13,16 @@ kumuluzee:
       username: dbuser
       password: postgres
       pool:
-        max-size: 2
+        max-size: 4
+  dev:
+    scan-libraries:
+      - customers-models
+      - customers-services
+  openapi-mp:
+    ui:
+      specification-server: http://20.242.208.205:8080
+    scanning:
+      debug: true
   health:
     checks:
 #      data-source-health-check:
