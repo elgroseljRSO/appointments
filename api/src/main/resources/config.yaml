@@ -21,8 +21,6 @@ kumuluzee:
   openapi-mp:
     ui:
       specification-server: http://20.242.208.205:8080
-    scanning:
-      debug: true
   health:
     checks:
 #      data-source-health-check:
