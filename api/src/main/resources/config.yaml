@@ -26,7 +26,6 @@ kumuluzee:
     web-instrumentation:
       - name: appointments-endpoint
         url-pattern: /v1/appointments/*
-
   logs:
     config-file: '<?xml version="1.0" encoding="UTF-8"?>
                             <Configuration name="comments">
@@ -34,8 +33,8 @@ kumuluzee:
                                     <Console name="console" target="SYSTEM_OUT">
                                         <PatternLayout pattern="%d %p %marker %m %X %ex %n"/>
                                     </Console>
-                                    <Socket name="logstash" host="33305687-d924-4076-9f98-add054974dc9-ls.logit.io"
-                                    port="32687" protocol="udp">
+                                    <Socket name="logstash" host="9063409d-4600-46a8-9760-324e7f30d611-ls.logit.io"
+                                    port="16351" protocol="udp">
                                         <JSONLayout complete="false" compact="true" eventEol="true" charset="UTF-8" properties="true"/>
                                     </Socket>
                                 </Appenders>

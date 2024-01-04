@@ -24,3 +24,5 @@ query allAppointments {
   }
 }
 
+body:
+{"query":"query allAppointments {\n  allAppointments {\n    result {\n      id\n      start\n      employee {\n        id\n        name\n      }\n      customer\n      service_type {\n        id\n        name\n        cost\n      }\n    }\n  }\n}\n","variables":null,"operationName":"allAppointments"}
