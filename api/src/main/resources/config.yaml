@@ -16,8 +16,8 @@ kumuluzee:
         max-size: 4
   dev:
     scan-libraries:
-      - customers-models
-      - customers-services
+      - appointments-models
+      - appointments-services
   openapi-mp:
     ui:
       specification-server: http://20.242.208.205:8080
