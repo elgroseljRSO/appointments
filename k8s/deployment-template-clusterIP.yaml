@@ -15,7 +15,7 @@ spec:
         app: appointments
     spec:
       containers:
-        - image: turkiznazaba/appointments:2023-12-27-15-52-22 #to be changed
+        - image: turkiznazaba/appointments:2024-01-04-12-15-45 #to be changed
           name: appointments
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -24,27 +24,13 @@ spec:
             - name: KUMULUZEE_DATASOURCES0_USERNAME
               value: frswtwtv
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: bsGzmeDzXOQg4xVO8aY9neDqLPPB-l_P
-          #            - name: KUMULUZEE_DATASOURCES0_PASSWORD
-          #              valueFrom:
-          #                secretKeyRef:
-          #                  name: dbpassword
-          #                  key: dbpassword
+              valueFrom:
+                secretKeyRef:
+                  name: dbpasswordappointments
+                  key: dbpasswordappointments
           ports:
             - containerPort: 8080
               name: server
-#          livenessProbe:
-#            httpGet:
-#              path: /health/live
-#              port: server
-#            initialDelaySeconds: 20
-#            periodSeconds: 3
-#          readinessProbe:
-#            httpGet:
-#              path: /health/ready
-#              port: server
-#            initialDelaySeconds: 20
-#            periodSeconds: 3
 
 ---
 

@@ -94,3 +94,15 @@ kubectl delete namespace ingress-basic
 ```
 
 
+secrets
+```bash
+#            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+#              value: bsGzmeDzXOQg4xVO8aY9neDqLPPB-l_P
+
+
+#            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+#              value: EfjnbNxlNDRLpxrUMApVIXn1L9meZ2Tb
+```
+
+
+
